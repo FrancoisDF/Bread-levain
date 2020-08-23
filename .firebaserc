@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "bread-7e5b7"
+  },
+  "targets": {
+    "bread-7e5b7": {
+      "hosting": {
+        "bread": [
+          "bread-7e5b7"
+        ]
+      }
+    }
+  }
+}
