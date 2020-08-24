@@ -1,7 +1,6 @@
 {
-  "APP_NAME": "bread",
+  "APP_NAME": "Bread",
   "About": "A propos",
-  "Hello world !": "Bonjour le monde !",
   "Home": "Accueil",
   "Cancel": "Annuler",
   "Change language": "Changer la langue",
@@ -11,5 +10,20 @@
   "Notifications": "Notifications",
   "Preferences": "Préférences",
   "Account": "Mon compte",
-  "Version": "Version"
+  "Version": "Version",
+  "Bread hydration (%)": "Hydratation du pain (%)",
+  "Calculate": "Calculer",
+  "Calculator": "Proportion",
+  "Indicate what among of floor you want and the hydration of the bread to get all information you need": "Indiquer les quantités de farine et le taux d'hydratation de la pâte souhaitée pour connaître les proportions idéales d'eau, sel et levain pour votre pain",
+  "Levain hydration used(%)": "Niveau d'hydratation du levain utilisé (%)",
+  "Levain percentage based of floor": "Pourcentage de levain en fonction de la farine",
+  "Make your bread": "Faites votre pain!",
+  "Profile": "Profile",
+  "Quantity of Floor": "Quantité de farine",
+  "Quantity of levain": "Quantité de levain",
+  "Quantity of salt": "Quantité de sel",
+  "Quantity of water": "Quantité d'eau",
+  "Recipe": "Recettes",
+  "Salt percentage": "Pourcentage de sel",
+  "Science of bread": "La science du pain"
 }

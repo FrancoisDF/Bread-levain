@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BreadService, BreadContext } from './bread.service';
 import { ModalController } from '@ionic/angular';
+import { BreadService, BreadContext } from './bread.service';
+import { BreadResultComponent } from './breadResult.component';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
   async onSubmit(value: BreadContext) {
     const result = this.breadService.calculate(value);
     const modal = await this.modalController.create({
-      component: ModalPage,
+      component: BreadResultComponent,
       componentProps: result,
     });
     return await modal.present();

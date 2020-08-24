@@ -9,7 +9,7 @@ import { CoreModule } from '@core';
 import { SharedModule } from '@shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { ResultBreatComponent } from './resultBread.component';
+import { BreadResultComponent } from './breadResult.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +21,7 @@ import { ResultBreatComponent } from './resultBread.component';
     ReactiveFormsModule,
     HomeRoutingModule,
   ],
-  declarations: [HomeComponent],
-  entryComponents: [ResultBreatComponent],
+  declarations: [HomeComponent, BreadResultComponent],
+  entryComponents: [BreadResultComponent],
 })
 export class HomeModule {}

@@ -8,8 +8,10 @@
 </ion-header>
 <ion-content>
   <ion-card class="ion-text-center">
-    <ion-card-header>Make a bread</ion-card-header>
-    <ion-card-content>
+    <ion-card-header>
+      <ion-card-title translate>Make your bread</ion-card-title>
+    </ion-card-header>
+    <ion-card-content translate>
       Indicate what among of floor you want and the hydration of the bread to get all information you need
     </ion-card-content>
     <form [formGroup]="breadForm" (ngSubmit)="onSubmit(breadForm.value)">
@@ -27,7 +29,7 @@
           </ion-item>
 
           <ion-item lines="none">
-            <ion-label>Bread hydration (%)</ion-label>
+            <ion-label translate>Bread hydration (%)</ion-label>
             <ion-note slot="end">{{ breadForm.value.breadHumidity }} %</ion-note>
           </ion-item>
           <ion-item>
@@ -49,7 +51,7 @@
           </ion-item>
 
           <ion-item lines="none">
-            <ion-label>Levain hydration used(%)</ion-label>
+            <ion-label translate>Levain hydration used(%)</ion-label>
             <ion-note slot="end">{{ breadForm.value.levainHumidity }} %</ion-note>
           </ion-item>
           <ion-item>
@@ -60,7 +62,7 @@
           </ion-item>
 
           <ion-item lines="none">
-            <ion-label>Levain percentage based of floor</ion-label>
+            <ion-label translate>Levain percentage based of floor</ion-label>
             <ion-note slot="end">{{ breadForm.value.levainPercent }} %</ion-note>
           </ion-item>
           <ion-item>
@@ -72,7 +74,7 @@
         </ion-list>
       </ion-card-content>
       <ion-card-content>
-        <ion-button expand="block" type="submit">Calculate</ion-button>
+        <ion-button expand="block" type="submit" translate>Calculate</ion-button>
       </ion-card-content>
     </form>
   </ion-card>

@@ -1,15 +1,3 @@
 {
-  "APP_NAME": "bread",
-  "About": "About",
-  "Hello world !": "Hello world !",
-  "Home": "Home",
-  "Cancel": "Cancel",
-  "Change language": "Change language",
-  "Language": "Language",
-  "Ok": "Ok",
-  "Settings": "Settings",
-  "Notifications": "Notifications",
-  "Preferences": "Preferences",
-  "Account": "Account",
-  "Version": "Version"
+  "APP_NAME": "Bread"
 }
