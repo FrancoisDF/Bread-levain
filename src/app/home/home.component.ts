@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
   ) {
     this.breadForm = this.formBuilder.group({
       floor: 400,
-      breadHumidity: 50,
+      breadHumidity: 60,
       saltPercent: 2.5,
       levainHumidity: 60,
-      levainPercent: 40,
+      levainPercent: 30,
     });
   }
 
@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
     const modal = await this.modalController.create({
       component: BreadResultComponent,
       componentProps: result,
+      swipeToClose: true,
     });
     return await modal.present();
   }

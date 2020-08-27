@@ -45,7 +45,7 @@ export class BreadService {
     return {
       floor,
       levain,
-      water,
+      water: Math.round(water),
       saltMin,
       saltMax,
     };

@@ -19,7 +19,7 @@
         <ion-list>
           <ion-item lines="none">
             <ion-label translate>Quantity of Floor </ion-label>
-            <ion-note slot="end">{{ breadForm.value.floor }} g</ion-note>
+            <ion-note mode="ios" color="primary" slot="end">{{ breadForm.value.floor }} g</ion-note>
           </ion-item>
           <ion-item>
             <ion-range formControlName="floor" min="100" max="1000" step="50" snaps="true" color="secondary">
@@ -30,7 +30,7 @@
 
           <ion-item lines="none">
             <ion-label translate>Bread hydration (%)</ion-label>
-            <ion-note slot="end">{{ breadForm.value.breadHumidity }} %</ion-note>
+            <ion-note mode="ios" color="primary" slot="end">{{ breadForm.value.breadHumidity }} %</ion-note>
           </ion-item>
           <ion-item>
             <ion-range formControlName="breadHumidity" min="40" max="80" step="5" snaps="true" color="secondary">
@@ -41,7 +41,7 @@
 
           <ion-item lines="none">
             <ion-label translate>Salt percentage</ion-label>
-            <ion-note slot="end">{{ breadForm.value.saltPercent }} %</ion-note>
+            <ion-note mode="ios" color="primary" slot="end">{{ breadForm.value.saltPercent }} %</ion-note>
           </ion-item>
           <ion-item>
             <ion-range formControlName="saltPercent" min="2" max="3.5" step="0.5" snaps="true" color="secondary">
@@ -52,7 +52,7 @@
 
           <ion-item lines="none">
             <ion-label translate>Levain hydration used(%)</ion-label>
-            <ion-note slot="end">{{ breadForm.value.levainHumidity }} %</ion-note>
+            <ion-note mode="ios" color="primary" slot="end">{{ breadForm.value.levainHumidity }} %</ion-note>
           </ion-item>
           <ion-item>
             <ion-range formControlName="levainHumidity" min="30" max="70" step="5" snaps="true" color="secondary">
@@ -63,7 +63,7 @@
 
           <ion-item lines="none">
             <ion-label translate>Levain percentage based of floor</ion-label>
-            <ion-note slot="end">{{ breadForm.value.levainPercent }} %</ion-note>
+            <ion-note mode="ios" color="primary" slot="end">{{ breadForm.value.levainPercent }} %</ion-note>
           </ion-item>
           <ion-item>
             <ion-range formControlName="levainPercent" min="20" max="50" step="10" snaps="true" color="secondary">
