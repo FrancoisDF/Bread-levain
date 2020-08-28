@@ -21,7 +21,7 @@ export class CardBreadComponent implements OnInit {
 
   ngOnInit() {
     this.breadForm = this.formBuilder.group({
-      floor: 400,
+      flour: 400,
       breadHydration: 60,
       saltPercent: 2.8,
       levainHydration: 60,

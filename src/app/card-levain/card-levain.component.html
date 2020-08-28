@@ -35,9 +35,9 @@
             <ion-label translate>Hydration</ion-label>
           </ion-item-divider>
 
-          <ion-item lines="none">
+          <ion-item lines="none" mode="ios">
             <ion-label translate>Percentage</ion-label>
-            <ion-note mode="ios" color="primary" slot="end">{{ levainForm.value.levainHydration }} %</ion-note>
+            <ion-note color="primary" slot="end">{{ levainForm.value.levainHydration }} %</ion-note>
           </ion-item>
           <ion-item lines="none">
             <ion-range formControlName="levainHydration" min="30" max="100" step="5" snaps="true" color="secondary">
@@ -50,11 +50,9 @@
             <ion-toggle slot="end" color="primary" formControlName="sameHydration"></ion-toggle>
           </ion-item>
           <ng-container *ngIf="!levainForm.value.sameHydration">
-            <ion-item lines="none">
+            <ion-item lines="none" mode="ios">
               <ion-label translate>Expected percentage</ion-label>
-              <ion-note mode="ios" color="primary" slot="end"
-                >{{ levainForm.value.levainHydrationExpected }} %</ion-note
-              >
+              <ion-note color="primary" slot="end">{{ levainForm.value.levainHydrationExpected }} %</ion-note>
             </ion-item>
             <ion-item lines="none">
               <ion-range

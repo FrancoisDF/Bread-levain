@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 // import { map, catchError } from 'rxjs/operators';
 
 export interface BreadContext {
-  floor: number;
+  flour: number;
   breadHydration: number;
   levainHydration: number;
   saltPercent: number;
@@ -12,7 +12,7 @@ export interface BreadContext {
 }
 
 export interface RecipeBreadContext {
-  floor: number;
+  flour: number;
   saltMin: number;
   saltMax: number;
   water: number;
@@ -27,7 +27,7 @@ export interface LevainContext {
 }
 
 export interface RecipeLevainContext {
-  floor: number;
+  flour: number;
   water: number;
 }
 
@@ -43,19 +43,19 @@ export class BreadService {
     const saltPercent = (ctx.saltPercent * 1) / 100;
     const levainHydrationPercent = (ctx.levainHydration * 1) / 100;
     const breadHydrationPercent = (ctx.breadHydration * 1) / 100;
-    const floor = ctx.floor;
-    const levain = floor * levainPercent;
+    const flour = ctx.flour;
+    const levain = flour * levainPercent;
     //  ($B$4 + $D$5 * (1/(1+ $B$7 )))* $B$5-$D$5*(1-(1/(1+$B$7)))
     const water =
-      (floor + levain * (1 / (1 + levainHydrationPercent))) * breadHydrationPercent -
+      (flour + levain * (1 / (1 + levainHydrationPercent))) * breadHydrationPercent -
       levain * (1 - 1 / (1 + levainHydrationPercent));
     const saltMin = Math.ceil(saltPercent * water);
     // (($B$4+$D$5*(1/(1+$B$7)))*$B$5)*$B$6
     const saltMax = Math.round(
-      (floor + levain * (1 / (1 + levainHydrationPercent))) * breadHydrationPercent * saltPercent
+      (flour + levain * (1 / (1 + levainHydrationPercent))) * breadHydrationPercent * saltPercent
     );
     return {
-      floor,
+      flour,
       levain,
       water: Math.round(water),
       saltMin,
@@ -67,13 +67,13 @@ export class BreadService {
     const { levain, levainExpected, levainHydration, levainHydrationExpected } = ctx;
 
     const waterStart = (levainHydration / (100 + levainHydration)) * levain;
-    const floorStart = (100 / (100 + levainHydration)) * levain;
+    const flourStart = (100 / (100 + levainHydration)) * levain;
     const waterEnd = (levainHydrationExpected / (100 + levainHydrationExpected)) * levainExpected - waterStart;
-    const floorEnd = (100 / (100 + levainHydrationExpected)) * levainExpected - floorStart;
+    const flourEnd = (100 / (100 + levainHydrationExpected)) * levainExpected - flourStart;
 
     return {
       water: waterEnd,
-      floor: floorEnd,
+      flour: flourEnd,
     };
   }
 }

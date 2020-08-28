@@ -15,12 +15,12 @@ import { ModalController } from '@ionic/angular';
     <ion-content>
       <ion-list>
         <ion-item>
-          <ion-label translate>Quantity of Floor </ion-label>
-          <ion-note slot="end">{{ floor }} g</ion-note>
+          <ion-label translate>Quantity of flour </ion-label>
+          <ion-label color="primary" slot="end">{{ flour }} g</ion-label>
         </ion-item>
         <ion-item>
           <ion-label translate>Quantity of water </ion-label>
-          <ion-note slot="end">{{ water }} g</ion-note>
+          <ion-label color="primary" slot="end">{{ water }} g</ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -28,7 +28,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class ResultLevainComponent {
   // Data passed in by componentProps
-  @Input() floor: number;
+  @Input() flour: number;
   @Input() water: number;
 
   constructor(private modalCtrl: ModalController) {}

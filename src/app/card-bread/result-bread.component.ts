@@ -15,20 +15,20 @@ import { ModalController } from '@ionic/angular';
     <ion-content fullscreen>
       <ion-list>
         <ion-item>
-          <ion-label translate>Quantity of Floor </ion-label>
-          <ion-note slot="end">{{ floor }} g</ion-note>
+          <ion-label translate>Quantity of flour </ion-label>
+          <ion-label color="primary" slot="end">{{ flour }} g</ion-label>
         </ion-item>
         <ion-item>
           <ion-label translate>Quantity of water </ion-label>
-          <ion-note slot="end">{{ water }} g</ion-note>
+          <ion-label color="primary" slot="end">{{ water }} g</ion-label>
         </ion-item>
         <ion-item>
           <ion-label translate>Quantity of levain </ion-label>
-          <ion-note slot="end">{{ levain }} g</ion-note>
+          <ion-label color="primary" slot="end">{{ levain }} g</ion-label>
         </ion-item>
         <ion-item>
           <ion-label translate>Quantity of salt </ion-label>
-          <ion-note slot="end">{{ saltMin }} g - {{ saltMax }} g</ion-note>
+          <ion-label color="primary" slot="end">{{ saltMin }} g - {{ saltMax }} g</ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -36,7 +36,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class ResultBreadComponent {
   // Data passed in by componentProps
-  @Input() floor: number;
+  @Input() flour: number;
   @Input() saltMin: number;
   @Input() saltMax: number;
   @Input() water: number;
