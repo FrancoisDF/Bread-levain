@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { BreadService, BreadContext } from '@core/bread.service';
 import { ResultBreadComponent } from './result-bread.component';
+import { range, round } from 'lodash';
 
 interface BreadContextUI extends BreadContext {
   basedOn: 'flour' | 'levain';
@@ -25,22 +26,33 @@ export class CardBreadComponent implements OnInit {
 
   ngOnInit() {
     this.breadForm = this.formBuilder.group({
-      flour: 400,
-      levain: 100,
+      ...this.breadService.preference,
       basedOn: 'flour',
-      breadHydration: 60,
-      saltPercent: 2.8,
-      levainHydration: 60,
-      levainPercent: 30,
       advanced: false,
     });
   }
+
+  getList(min: number, max: number, step: number): number[] {
+    return range(min, max + step, step).map((item) => round(item, 1));
+  }
+
   async onSubmit(value: BreadContextUI) {
+    const { flour, levain, breadHydration, levainHydration, saltPercent, levainPercent } = value;
     if (value.basedOn === 'flour') {
-      value.levain = Math.round((value.flour * (value.levainPercent * 1)) / 100);
+      value.levain = Math.round((flour * (levainPercent * 1)) / 100);
     } else {
-      value.flour = Math.round(value.levain / ((value.levainPercent * 1) / 100));
+      value.flour = Math.round(levain / ((levainPercent * 1) / 100));
     }
+
+    this.breadService.preference = {
+      ...this.breadService.preference,
+      flour,
+      levain,
+      breadHydration,
+      levainHydration,
+      saltPercent,
+      levainPercent,
+    };
 
     const result = this.breadService.bread(value as BreadContext);
     const modal = await this.modalController.create({

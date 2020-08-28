@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 // import { Observable, of } from 'rxjs';
 // import { map, catchError } from 'rxjs/operators';
 
+const preferenceKey = 'preference';
+
 export interface BreadContext {
   flour: number;
   levain: number;
@@ -36,6 +38,15 @@ export interface RecipeLevainContext {
   providedIn: 'root',
 })
 export class BreadService {
+  defaultPreference: BreadContext = {
+    flour: 400,
+    levain: 100,
+    breadHydration: 60,
+    saltPercent: 2.8,
+    levainHydration: 60,
+    levainPercent: 30,
+  };
+
   constructor() {}
 
   bread(ctx: BreadContext): RecipeBreadContext {
@@ -74,5 +85,21 @@ export class BreadService {
       water: waterEnd,
       flour: flourEnd,
     };
+  }
+
+  /**
+   * save preferences.
+   */
+  set preference(pref: BreadContext) {
+    localStorage.setItem(preferenceKey, JSON.stringify(pref));
+  }
+
+  /**
+   * Gets the current preferences.
+   */
+  get preference(): BreadContext {
+    const pref = localStorage.getItem(preferenceKey);
+
+    return pref ? JSON.parse(pref) : this.defaultPreference;
   }
 }

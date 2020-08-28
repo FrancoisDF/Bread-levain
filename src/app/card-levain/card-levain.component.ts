@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { BreadService, LevainContext } from '@core/bread.service';
 import { ResultLevainComponent } from './result-levain.component';
+import { range, round } from 'lodash';
 
 export interface LevainContextUI {
   levain: number;
@@ -45,8 +46,18 @@ export class CardLevainComponent implements OnInit {
       this.levainForm.controls['levainExpected'].setValue(val * 2);
     });
   }
+
+  getList(min: number, max: number, step: number): number[] {
+    return range(min, max + step, step).map((item) => round(item, 1));
+  }
+
   async onSubmit(value: LevainContextUI) {
     const { levain, levainExpected, levainDoubled, levainHydration, levainHydrationExpected, sameHydration } = value;
+
+    this.breadService.preference = {
+      ...this.breadService.preference,
+      levainHydration: levainHydrationExpected,
+    };
 
     const levainContext: LevainContext = {
       levain,
