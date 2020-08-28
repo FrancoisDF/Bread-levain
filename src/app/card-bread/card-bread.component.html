@@ -1,74 +1,92 @@
-<ion-card class="ion-text-center">
+<ion-card>
   <ion-card-header>
     <ion-card-title translate>Make your bread</ion-card-title>
   </ion-card-header>
-  <ion-card-content translate>
-    Indicate what amount of flour you want and the hydration of the bread to get all information you need
+  <ion-card-content translate style="padding-bottom: 0;">
+    Indicate what amount of flour or levain you want or have and the hydration of your levain to get the perfect bread
+    recipe
   </ion-card-content>
   <form [formGroup]="breadForm" (ngSubmit)="onSubmit(breadForm.value)">
-    <ion-card-content>
-      <ion-list>
-        <ion-item-group>
+    <ion-list>
+      <ion-item-group>
+        <ion-card-content>
+          <ion-segment formControlName="basedOn">
+            <ion-segment-button value="flour">
+              <ion-label translate>Quantity of flour</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="levain">
+              <ion-label translate>Quantity of levain</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-card-content>
+        <div *ngIf="breadForm.value.basedOn === 'flour'; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
           <ion-item>
-            <ion-label translate>Quantity of flour </ion-label>
-            <ion-input slot="end" type="number" formControlName="flour"></ion-input>
+            <ion-input type="number" formControlName="flour"></ion-input>
             <ion-label slot="end">g</ion-label>
+          </ion-item>
+        </ng-template>
+        <ng-template #elseBlock>
+          <ion-item>
+            <ion-input type="number" formControlName="levain"></ion-input>
+            <ion-label slot="end">g</ion-label>
+          </ion-item>
+        </ng-template>
+
+        <ion-item lines="none" mode="ios">
+          <ion-label translate>Levain hydration used(%)</ion-label>
+          <ion-note color="primary" slot="end">{{ breadForm.value.levainHydration }} %</ion-note>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-range formControlName="levainHydration" min="30" max="100" step="5" snaps="true" color="secondary">
+            <ion-label slot="start">30%</ion-label>
+            <ion-label slot="end">100%</ion-label>
+          </ion-range>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label translate>Advanced settings</ion-label>
+          <ion-toggle slot="end" color="primary" formControlName="advanced"></ion-toggle>
+        </ion-item-divider>
+        <ng-container *ngIf="breadForm.value.advanced">
+          <ion-item lines="none" mode="ios">
+            <ion-label translate>Bread hydration (%)</ion-label>
+            <ion-note color="primary" slot="end">{{ breadForm.value.breadHydration }} %</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-range formControlName="breadHydration" min="50" max="90" step="5" snaps="true" color="secondary">
+              <ion-label slot="start">50%</ion-label>
+              <ion-label slot="end">90%</ion-label>
+            </ion-range>
           </ion-item>
 
           <ion-item lines="none" mode="ios">
-            <ion-label translate>Levain hydration used(%)</ion-label>
-            <ion-note color="primary" slot="end">{{ breadForm.value.levainHydration }} %</ion-note>
+            <ion-label translate>Salt (%)</ion-label>
+            <ion-note color="primary" slot="end">{{ breadForm.value.saltPercent }} %</ion-note>
           </ion-item>
           <ion-item>
-            <ion-range formControlName="levainHydration" min="30" max="100" step="5" snaps="true" color="secondary">
-              <ion-label slot="start">30%</ion-label>
-              <ion-label slot="end">100%</ion-label>
+            <ion-range formControlName="saltPercent" min="2" max="3.5" step="0.2" snaps="true" color="secondary">
+              <ion-label slot="start">2%</ion-label>
+              <ion-label slot="end">3.5%</ion-label>
             </ion-range>
           </ion-item>
-        </ion-item-group>
 
-        <ion-item-group>
-          <ion-item-divider>
-            <ion-label translate>Advanced settings</ion-label>
-            <ion-toggle slot="end" color="primary" formControlName="advanced"></ion-toggle>
-          </ion-item-divider>
-          <ng-container *ngIf="breadForm.value.advanced">
-            <ion-item lines="none" mode="ios">
-              <ion-label translate>Bread hydration (%)</ion-label>
-              <ion-note color="primary" slot="end">{{ breadForm.value.breadHydration }} %</ion-note>
-            </ion-item>
-            <ion-item>
-              <ion-range formControlName="breadHydration" min="50" max="90" step="5" snaps="true" color="secondary">
-                <ion-label slot="start">50%</ion-label>
-                <ion-label slot="end">90%</ion-label>
-              </ion-range>
-            </ion-item>
-
-            <ion-item lines="none" mode="ios">
-              <ion-label translate>Salt (%)</ion-label>
-              <ion-note color="primary" slot="end">{{ breadForm.value.saltPercent }} %</ion-note>
-            </ion-item>
-            <ion-item>
-              <ion-range formControlName="saltPercent" min="2" max="3.5" step="0.2" snaps="true" color="secondary">
-                <ion-label slot="start">2%</ion-label>
-                <ion-label slot="end">3.5%</ion-label>
-              </ion-range>
-            </ion-item>
-
-            <ion-item lines="none" mode="ios">
-              <ion-label translate>Levain quantity (%)</ion-label>
-              <ion-note color="primary" slot="end">{{ breadForm.value.levainPercent }} %</ion-note>
-            </ion-item>
-            <ion-item>
-              <ion-range formControlName="levainPercent" min="20" max="50" step="10" snaps="true" color="secondary">
-                <ion-label slot="start">20%</ion-label>
-                <ion-label slot="end">50%</ion-label>
-              </ion-range>
-            </ion-item>
-          </ng-container>
-        </ion-item-group>
-      </ion-list>
-    </ion-card-content>
+          <ion-item lines="none" mode="ios">
+            <ion-label translate>Levain quantity (%)</ion-label>
+            <ion-note color="primary" slot="end">{{ breadForm.value.levainPercent }} %</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-range formControlName="levainPercent" min="20" max="50" step="10" snaps="true" color="secondary">
+              <ion-label slot="start">20%</ion-label>
+              <ion-label slot="end">50%</ion-label>
+            </ion-range>
+          </ion-item>
+        </ng-container>
+      </ion-item-group>
+    </ion-list>
+    <!-- </ion-card-content> -->
     <ion-card-content>
       <ion-button expand="block" type="submit" translate>Calculate</ion-button>
     </ion-card-content>

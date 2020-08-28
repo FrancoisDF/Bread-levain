@@ -2,75 +2,75 @@
   <ion-card-header>
     <ion-card-title translate>Nourish your levain</ion-card-title>
   </ion-card-header>
-  <ion-card-content translate>
+  <ion-card-content translate style="padding-bottom: 0;">
     Nourish your levain 4h before using it, then keep it in the fridge until next use.
   </ion-card-content>
   <form [formGroup]="levainForm" (ngSubmit)="onSubmit(levainForm.value)">
-    <ion-card-content>
-      <ion-list>
-        <ion-item-group>
-          <ion-item-divider>
-            <ion-label translate>Levain</ion-label>
-          </ion-item-divider>
-          <ion-item lines="none">
-            <ion-label translate>Weight</ion-label>
-            <ion-input slot="end" type="number" formControlName="levain"></ion-input>
+    <!-- <ion-card-content> -->
+    <ion-list>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label translate>Levain</ion-label>
+        </ion-item-divider>
+        <ion-item lines="none">
+          <ion-label translate>Weight</ion-label>
+          <ion-input slot="end" type="number" formControlName="levain"></ion-input>
+          <ion-label slot="end">g</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label translate>Double quantity</ion-label>
+          <ion-toggle slot="end" color="primary" formControlName="levainDoubled"></ion-toggle>
+        </ion-item>
+        <ng-container *ngIf="!levainForm.value.levainDoubled">
+          <ion-item>
+            <ion-label translate>Expected weight</ion-label>
+            <ion-input slot="end" type="number" formControlName="levainExpected"></ion-input>
             <ion-label slot="end">g</ion-label>
           </ion-item>
-          <ion-item lines="none">
-            <ion-label translate>Double quantity</ion-label>
-            <ion-toggle slot="end" color="primary" formControlName="levainDoubled"></ion-toggle>
-          </ion-item>
-          <ng-container *ngIf="!levainForm.value.levainDoubled">
-            <ion-item>
-              <ion-label translate>Expected weight</ion-label>
-              <ion-input slot="end" type="number" formControlName="levainExpected"></ion-input>
-              <ion-label slot="end">g</ion-label>
-            </ion-item>
-          </ng-container>
-        </ion-item-group>
+        </ng-container>
+      </ion-item-group>
 
-        <ion-item-group>
-          <ion-item-divider>
-            <ion-label translate>Hydration</ion-label>
-          </ion-item-divider>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label translate>Hydration</ion-label>
+        </ion-item-divider>
 
+        <ion-item lines="none" mode="ios">
+          <ion-label translate>Percentage</ion-label>
+          <ion-note color="primary" slot="end">{{ levainForm.value.levainHydration }} %</ion-note>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-range formControlName="levainHydration" min="30" max="100" step="5" snaps="true" color="secondary">
+            <ion-label slot="start">30%</ion-label>
+            <ion-label slot="end">100%</ion-label>
+          </ion-range>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label translate>Keep same hydration</ion-label>
+          <ion-toggle slot="end" color="primary" formControlName="sameHydration"></ion-toggle>
+        </ion-item>
+        <ng-container *ngIf="!levainForm.value.sameHydration">
           <ion-item lines="none" mode="ios">
-            <ion-label translate>Percentage</ion-label>
-            <ion-note color="primary" slot="end">{{ levainForm.value.levainHydration }} %</ion-note>
+            <ion-label translate>Expected percentage</ion-label>
+            <ion-note color="primary" slot="end">{{ levainForm.value.levainHydrationExpected }} %</ion-note>
           </ion-item>
           <ion-item lines="none">
-            <ion-range formControlName="levainHydration" min="30" max="100" step="5" snaps="true" color="secondary">
+            <ion-range
+              formControlName="levainHydrationExpected"
+              min="30"
+              max="100"
+              step="5"
+              snaps="true"
+              color="secondary"
+            >
               <ion-label slot="start">30%</ion-label>
               <ion-label slot="end">100%</ion-label>
             </ion-range>
           </ion-item>
-          <ion-item lines="none">
-            <ion-label translate>Keep same hydration</ion-label>
-            <ion-toggle slot="end" color="primary" formControlName="sameHydration"></ion-toggle>
-          </ion-item>
-          <ng-container *ngIf="!levainForm.value.sameHydration">
-            <ion-item lines="none" mode="ios">
-              <ion-label translate>Expected percentage</ion-label>
-              <ion-note color="primary" slot="end">{{ levainForm.value.levainHydrationExpected }} %</ion-note>
-            </ion-item>
-            <ion-item lines="none">
-              <ion-range
-                formControlName="levainHydrationExpected"
-                min="30"
-                max="100"
-                step="5"
-                snaps="true"
-                color="secondary"
-              >
-                <ion-label slot="start">30%</ion-label>
-                <ion-label slot="end">100%</ion-label>
-              </ion-range>
-            </ion-item>
-          </ng-container>
-        </ion-item-group>
-      </ion-list>
-    </ion-card-content>
+        </ng-container>
+      </ion-item-group>
+    </ion-list>
+    <!-- </ion-card-content> -->
     <ion-card-content>
       <ion-button expand="block" type="submit" translate>Calculate</ion-button>
     </ion-card-content>

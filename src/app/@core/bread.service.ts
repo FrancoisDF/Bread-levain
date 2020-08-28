@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 export interface BreadContext {
   flour: number;
+  levain: number;
   breadHydration: number;
   levainHydration: number;
   saltPercent: number;
@@ -38,13 +39,11 @@ export class BreadService {
   constructor() {}
 
   bread(ctx: BreadContext): RecipeBreadContext {
-    console.log('Calculate :', ctx);
-    const levainPercent = (ctx.levainPercent * 1) / 100;
+    const { flour, levain } = ctx;
+
     const saltPercent = (ctx.saltPercent * 1) / 100;
     const levainHydrationPercent = (ctx.levainHydration * 1) / 100;
     const breadHydrationPercent = (ctx.breadHydration * 1) / 100;
-    const flour = ctx.flour;
-    const levain = flour * levainPercent;
     //  ($B$4 + $D$5 * (1/(1+ $B$7 )))* $B$5-$D$5*(1-(1/(1+$B$7)))
     const water =
       (flour + levain * (1 / (1 + levainHydrationPercent))) * breadHydrationPercent -
