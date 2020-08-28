@@ -1,13 +1,11 @@
 {
   "APP_NAME": "Bread",
   "About": "A propos",
-  "Home": "Accueil",
   "Cancel": "Annuler",
   "Change language": "Changer la langue",
   "Language": "Langue",
   "Ok": "Ok",
   "Settings": "Paramètres",
-  "Notifications": "Notifications",
   "Preferences": "Préférences",
   "Account": "Mon compte",
   "Version": "Version",
@@ -25,5 +23,19 @@
   "Quantity of water": "Quantité d'eau",
   "Recipe": "Recettes",
   "Salt percentage": "Pourcentage de sel",
-  "Science of bread": "La science du pain"
+  "Science of bread": "La science du pain",
+
+  "Advanced settings": "Option avancée",
+  "Double quantity": "Doubler les quantités",
+  "Expected percentage": "Pourcentage désiré",
+  "Expected weight": "Poids désiré",
+  "Hydration": "Hydratation",
+  "Keep same hydration": "Garder la même hydratation",
+  "Levain": "Levain",
+  "Levain quantity (%)": "Quantité de levain",
+  "Nourish your levain": "Nourrir votre levain",
+  "Nourish your levain 4h before using it, then keep it in the fridge until next use.": "Nourir votre levin 4 heures avant de l'utiliser. Garder le rest au frais",
+  "Percentage": "Pourcentage",
+  "Salt (%)": "Sel (%)",
+  "Weight": "Poids"
 }

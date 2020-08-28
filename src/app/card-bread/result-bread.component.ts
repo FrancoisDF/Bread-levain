@@ -34,7 +34,7 @@ import { ModalController } from '@ionic/angular';
     </ion-content>
   `,
 })
-export class BreadResultComponent {
+export class ResultBreadComponent {
   // Data passed in by componentProps
   @Input() floor: number;
   @Input() saltMin: number;
