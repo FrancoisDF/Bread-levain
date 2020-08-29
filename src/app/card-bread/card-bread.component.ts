@@ -49,7 +49,6 @@ export class CardBreadComponent implements OnInit {
       flour,
       levain,
       breadHydration,
-      levainHydration,
       saltPercent,
       levainPercent,
     };

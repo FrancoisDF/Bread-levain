@@ -7,6 +7,26 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-card-content>
+    <h1 translate>My dear levain</h1>
+    <p translate>
+      Indicate the hydration of your levain to get the perfect dough.
+    </p>
+    <form [formGroup]="levainForm">
+      <ion-item lines="none" mode="ios">
+        <ion-label translate>Levain Hydration</ion-label>
+        <ion-select slot="end" formControlName="levainHydration">
+          <ion-select-option *ngFor="let item of getList(50, 100, 5)" [value]="item">{{ item }} %</ion-select-option>
+        </ion-select>
+        <ion-icon
+          slot="start"
+          color="secondary"
+          name="information-circle-outline"
+          (click)="openDefinition()"
+        ></ion-icon>
+      </ion-item>
+    </form>
+  </ion-card-content>
   <app-card-bread></app-card-bread>
   <app-card-levain></app-card-levain>
 </ion-content>

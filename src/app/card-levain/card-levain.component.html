@@ -35,12 +35,12 @@
           <ion-label translate>Hydration</ion-label>
         </ion-item-divider>
 
-        <ion-item lines="none" mode="ios">
+        <!-- <ion-item lines="none" mode="ios">
           <ion-label translate>Percentage</ion-label>
           <ion-select slot="end" formControlName="levainHydration">
             <ion-select-option *ngFor="let item of getList(30, 100, 5)" [value]="item">{{ item }} %</ion-select-option>
           </ion-select>
-        </ion-item>
+        </ion-item> -->
         <ion-item lines="none">
           <ion-label translate>Keep same hydration</ion-label>
           <ion-toggle slot="end" color="primary" formControlName="sameHydration"></ion-toggle>

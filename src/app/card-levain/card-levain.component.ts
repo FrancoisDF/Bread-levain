@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ModalController } from '@ionic/angular';
 import { BreadService, LevainContext } from '@core/bread.service';
 import { ResultLevainComponent } from './result-levain.component';
 import { range, round } from 'lodash';
+import { Subscription } from 'rxjs';
 
 export interface LevainContextUI {
   levain: number;
@@ -20,8 +21,10 @@ export interface LevainContextUI {
   templateUrl: './card-levain.component.html',
   styleUrls: ['./card-levain.component.scss'],
 })
-export class CardLevainComponent implements OnInit {
+export class CardLevainComponent implements OnInit, OnDestroy {
   levainForm: FormGroup;
+  subscription: Subscription;
+
   constructor(
     private formBuilder: FormBuilder,
     private modalController: ModalController,
@@ -29,20 +32,16 @@ export class CardLevainComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const pref = this.breadService.preference;
     this.levainForm = this.formBuilder.group({
       levain: 50,
       levainExpected: 100,
       levainDoubled: true,
-      levainHydration: 60,
-      levainHydrationExpected: 60,
+      levainHydration: pref.levainHydration,
+      levainHydrationExpected: pref.levainHydration,
       sameHydration: true,
     });
-    this.levainForm.valueChanges.subscribe(() => {
-      if (this.levainForm.controls['levain'].value === 'someValue') {
-        //
-      }
-    });
-    this.levainForm.get('levain').valueChanges.subscribe((val) => {
+    this.subscription = this.levainForm.get('levain').valueChanges.subscribe((val) => {
       this.levainForm.controls['levainExpected'].setValue(val * 2);
     });
   }
@@ -52,12 +51,16 @@ export class CardLevainComponent implements OnInit {
   }
 
   async onSubmit(value: LevainContextUI) {
-    const { levain, levainExpected, levainDoubled, levainHydration, levainHydrationExpected, sameHydration } = value;
+    const { levain, levainExpected, levainDoubled, levainHydrationExpected, sameHydration } = value;
 
-    this.breadService.preference = {
-      ...this.breadService.preference,
-      levainHydration: levainHydrationExpected,
-    };
+    if (!sameHydration) {
+      this.breadService.preference = {
+        ...this.breadService.preference,
+        levainHydration: levainHydrationExpected,
+      };
+    }
+
+    const levainHydration = this.breadService.preference.levainHydration;
 
     const levainContext: LevainContext = {
       levain,
@@ -72,5 +75,9 @@ export class CardLevainComponent implements OnInit {
       swipeToClose: true,
     });
     return await modal.present();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

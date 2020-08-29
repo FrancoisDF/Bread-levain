@@ -8,7 +8,7 @@ import { ModalController } from '@ionic/angular';
       <ion-toolbar>
         <ion-title translate>Nourish your levain</ion-title>
         <ion-buttons slot="end">
-          <ion-button (click)="dismissModal()">Close</ion-button>
+          <ion-button (click)="dismissModal()" translate>Close</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
