@@ -2,9 +2,8 @@
   <ion-card-header>
     <ion-card-title translate>Make a dough</ion-card-title>
   </ion-card-header>
-  <ion-card-content translate style="padding-bottom: 0;">
-    Indicate what amount of flour or levain you want or have and the hydration of your levain to get the perfect dough
-    recipe.
+  <ion-card-content style="padding-bottom: 0;" translate>
+    Make a dough introduction
   </ion-card-content>
   <form [formGroup]="breadForm" (ngSubmit)="onSubmit(breadForm.value)">
     <ion-list>
@@ -50,7 +49,7 @@
         </ion-item-divider>
         <ng-container *ngIf="breadForm.value.advanced">
           <ion-item lines="none">
-            <ion-label translate>Bread hydration (%)</ion-label>
+            <ion-label translate>Dough hydration (%)</ion-label>
             <ion-select slot="end" formControlName="breadHydration">
               <ion-select-option *ngFor="let item of getList(50, 90, 5)" [value]="item">{{ item }} %</ion-select-option>
             </ion-select>

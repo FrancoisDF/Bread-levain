@@ -6,7 +6,7 @@ import { ModalController } from '@ionic/angular';
   template: `
     <ion-header translucent>
       <ion-toolbar>
-        <ion-title translate>Make your dough</ion-title>
+        <ion-title translate>Make a dough</ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="dismissModal()" translate>Close</ion-button>
         </ion-buttons>

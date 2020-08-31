@@ -14,7 +14,7 @@
     </p>
     <form [formGroup]="levainForm">
       <ion-item lines="none" mode="ios">
-        <ion-label translate>Levain Hydration</ion-label>
+        <ion-label translate>Levain hydration</ion-label>
         <ion-select slot="end" formControlName="levainHydration">
           <ion-select-option *ngFor="let item of getList(50, 100, 5)" [value]="item">{{ item }} %</ion-select-option>
         </ion-select>
